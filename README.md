@@ -1,3 +1,16 @@
+### Simple Text classification model on GPT-2 model
+
+### fine tuning TREC-6 results
+
+|Method|accuracy| f1 | precision | recall|
+|--|--|--|--|--|
+|Gpt 124M| 95.59|80.17|79.50|80.86|
+|SVM(Silva et al., 2010)|95.0|-|-|-|
+|USE(SOTA)|97.71|-|-|-|
+
+### Confusion Matrix
+
+
 **Status:** Archive (code is provided as-is, no updates expected)
 
 # gpt-2
