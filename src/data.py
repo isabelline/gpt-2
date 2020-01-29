@@ -1,7 +1,17 @@
 import pickle
 import tensorflow as tf
 
-def build_input_fn(is_training, X_file, Y_file, do_repeat=True):
+
+def encode_text(texts):
+    bpe = []
+    import encoder
+    enc = encoder.get_encoder('124M', '../models')
+    for text in texts:
+        tokens = enc.encode(text)
+        bpe.append(tokens)
+    return bpe
+
+def build_input_fn(is_training, X_file, Y_file, do_repeat=True, FLAGS=None):
     def input_fn(params):
         if is_training:
             with open(FLAGS.data_dir +"train/"+ X_file , 'rb') as f:
