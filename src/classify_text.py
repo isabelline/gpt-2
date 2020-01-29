@@ -181,6 +181,7 @@ def build_model_fn(num_train_steps):
 
             def metric_fn(loss, labels, pred, per_loss):
                 predictions = pred
+                CLASS = FLAGS.class_num
                 accuracy = tf.metrics.accuracy(labels, predictions)
                 loss_mean = tf.metrics.mean(per_loss)
                 precision = tf_metrics.precision(labels, predictions, CLASS, average="macro")
