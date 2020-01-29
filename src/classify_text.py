@@ -32,6 +32,8 @@ flags.DEFINE_string(
 
 flags.DEFINE_integer("class_num", 6, "Total class num.")
 
+flags.DEFINE_integer("maxlen", 130, "Max length.")
+
 flags.DEFINE_integer("batch_count", 8, "Total batch size for training.")
 
 flags.DEFINE_float("learning_rate", 0.0001, "The initial learning rate for Adam.")
