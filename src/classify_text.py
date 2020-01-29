@@ -5,6 +5,7 @@ import numpy as np
 import re
 import tf_metrics
 import pprint
+import data
 
 os.chdir("D:/gpt-2/src")
 
