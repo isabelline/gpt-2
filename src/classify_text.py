@@ -24,11 +24,11 @@ flags.DEFINE_string(
     "The output directory where the model checkpoints will be written.")
 
 flags.DEFINE_string(
-    "gpt_ckpt", '../model/124M',
+    "gpt_ckpt", '../models/124M',
     "The directory of gpt checkpoint file.")
 
 flags.DEFINE_string(
-    "hparams", '../model/124M',
+    "hparams", '../models/124M',
     "The directory of gpt hparams file.")
 
 flags.DEFINE_integer("class_num", 6, "Total class num.")
@@ -120,34 +120,34 @@ def eval_confusion_matrix(labels, predictions,class_num):
 
 
 
- def get_assignment_map_from_checkpoint(tvars, init_checkpoint):
-  import collections
-  import re
-  assignment_map = {}
-  initialized_variable_names = {}
+def get_assignment_map_from_checkpoint(tvars, init_checkpoint):
+    import collections
+    import re
+    assignment_map = {}
+    initialized_variable_names = {}
 
-  name_to_variable = collections.OrderedDict()
-  for var in tvars:
-    name = var.name
-    m = re.match("^(.*):\\d+$", name)
-    if m is not None:
-      name = m.group(1)
-    name_to_variable[name] = var
+    name_to_variable = collections.OrderedDict()
+    for var in tvars:
+        name = var.name
+        m = re.match("^(.*):\\d+$", name)
+        if m is not None:
+            name = m.group(1)
+        name_to_variable[name] = var
 
-  init_vars = tf.train.list_variables(init_checkpoint)
-  print("========ckpt vars========")
-  pprint.pprint(init_vars)
+    init_vars = tf.train.list_variables(init_checkpoint)
+    print("========ckpt vars========")
+    pprint.pprint(init_vars)
 
-  assignment_map = collections.OrderedDict()
-  for x in init_vars:
-    (name, var) = (x[0], x[1])
-    if name not in name_to_variable:
-      continue
-    assignment_map[name] = name_to_variable[name]
-    initialized_variable_names[name] = 1
-    initialized_variable_names[name + ":0"] = 1
+    assignment_map = collections.OrderedDict()
+    for x in init_vars:
+        (name, var) = (x[0], x[1])
+        if name not in name_to_variable:
+            continue
+        assignment_map[name] = name_to_variable[name]
+        initialized_variable_names[name] = 1
+        initialized_variable_names[name + ":0"] = 1
 
-  return (assignment_map, initialized_variable_names)
+    return (assignment_map, initialized_variable_names)
 
 
 
@@ -224,8 +224,8 @@ def main():
     estimator = tf.estimator.Estimator(model_fn, model_dir=FLAGS.output_dir, config=run_config)
 
     if FLAGS.do_train:
-        train_input_fn = data.build_input_fn(True, "train_X", "train_Y")
-        test_input_fn = data.build_input_fn(False, "test_X", "test_Y")
+        train_input_fn = data.build_input_fn(True,  "train_X", "train_Y",True, FLAGS)
+        test_input_fn = data.build_input_fn(False, "test_X", "test_Y", False,FLAGS)
 
         train_spec = tf.estimator.TrainSpec(input_fn=train_input_fn, max_steps=num_train_steps)
         eval_spec = tf.estimator.EvalSpec(input_fn=test_input_fn, throttle_secs=3, steps=None)
@@ -233,10 +233,11 @@ def main():
         tf.estimator.train_and_evaluate(estimator, train_spec, eval_spec)
 
     if FLAGS.do_eval:
-        test_input_fn = data.build_input_fn(False, "test_X", "test_Y", False)
+        test_input_fn = data.build_input_fn(False, "test_X", "test_Y", False, FLAGS)
         estimator.evaluate(test_input_fn)
     if FLAGS.do_predict:
-        test_input_fn = data.build_input_fn(False, "test_X", "test_Y", False)
+        test_input_fn = data.build_input_fn(False, "test_X", "test_Y", False, FLAGS)
         predict_labels(estimator, test_input_fn)
 
-
+if __name__ == "__main__":
+    main()
