@@ -6,10 +6,11 @@
 |--|--|--|--|--|
 |Gpt 124M| 95.59|80.17|79.50|80.86|
 |SVM(Silva et al., 2010)|95.0|-|-|-|
-|USE(SOTA)|97.71|-|-|-|
+|Univeral Sentence Encoder(Cer et al., 2018)|97.71|-|-|-|
 
-### Confusion Matrix
 
+
+-----------------------------------------------------
 
 **Status:** Archive (code is provided as-is, no updates expected)
 
