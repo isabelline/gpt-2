@@ -1,4 +1,4 @@
-### Simple Text classification model on GPT-2 model
+## Simple Text classification model on GPT-2 model
 
 ### fine tuning TREC-6 results
 
@@ -7,6 +7,7 @@
 |Gpt 124M| 95.59|80.17|79.50|80.86|
 |Gpt 774M| 95.99|80.91|80.66|81.24|
 |SVM(Silva et al., 2010)|95.0|-|-|-|
+|LSTM(Zhou et al., 2015)|93.2|-|-|-|
 |Univeral Sentence Encoder(Cer et al., 2018)|97.71|-|-|-|
 
 
