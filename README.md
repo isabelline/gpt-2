@@ -4,15 +4,17 @@
 
 |Method|accuracy| f1 | precision | recall|
 |--|--|--|--|--|
-|Gpt 124M| 95.59|80.17|79.50|80.86|
-|Gpt 774M| 95.99|80.91|80.66|81.24|
+|Gpt 124M| 96.59|95.13|97.37|93.50|
+|Gpt 774M| -|-|-|-|
 |ULMFit(Howard et al., 2018)|96.4|-|-|-|
 |SVM(Silva et al., 2010)|95.0|-|-|-|
 |LSTM(Zhou et al., 2015)|93.2|-|-|-|
 |Univeral Sentence Encoder(Cer et al., 2018)|97.71|-|-|-|
 
 
-### How to run
+(77M model OOM error with 16G GPU)
+
+### How to run:
 
 ```
 python src/classify_text.py:
