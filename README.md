@@ -11,7 +11,9 @@
 |Univeral Sentence Encoder(Cer et al., 2018)|97.71|-|-|-|
 
 
-```python
+### How to run
+
+```
 python src/classify_text.py:
   --batch_count: Total batch size for training.
     (default: '8')
