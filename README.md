@@ -11,6 +11,47 @@
 |Univeral Sentence Encoder(Cer et al., 2018)|97.71|-|-|-|
 
 
+```python
+python src/classify_text.py:
+  --batch_count: Total batch size for training.
+    (default: '8')
+    (an integer)
+  --class_num: Total class num.
+    (default: '6')
+    (an integer)
+  --data_dir: The input data dir. Should contain the .tsv files (or other data
+    files) for the task.
+    (default: 'D:/TREC/')
+  --[no]do_eval: (no help available)
+    (default: 'true')
+  --[no]do_predict: (no help available)
+    (default: 'true')
+  --[no]do_train: (no help available)
+    (default: 'true')
+  --epoch_count: Total number of training epochs to perform.
+    (default: '40')
+    (an integer)
+  --gpt_ckpt: The directory of gpt checkpoint file.
+    (default: '../models/124M')
+  --hparams: The directory of gpt hparams file.
+    (default: '../models/124M')
+  --learning_rate: The initial learning rate for Adam.
+    (default: '0.0001')
+    (a number)
+  --maxlen: Max length.
+    (default: '130')
+    (an integer)
+  --output_dir: The output directory where the model checkpoints will be
+    written.
+    (default: './output')
+  --test_count: (no help available)
+    (default: '499')
+    (an integer)
+  --train_count: (no help available)
+    (default: '5452')
+    (an integer)
+```
+
 -----------------------------------------------------
 
 **Status:** Archive (code is provided as-is, no updates expected)
