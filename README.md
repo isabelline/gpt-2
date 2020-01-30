@@ -10,6 +10,7 @@
 |SVM(Silva et al., 2010)|95.0|-|-|-|
 |LSTM(Zhou et al., 2015)|93.2|-|-|-|
 |Univeral Sentence Encoder(Cer et al., 2018)|97.71|-|-|-|
+|Bert FT(Devlin et al., 2018)|97.2|-|-|-|
 
 
 (77M model OOM error with 16G GPU)
